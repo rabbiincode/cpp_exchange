@@ -8,6 +8,8 @@
 #include <exchange/order_type.hpp>
 #include <exchange/time_in_force.hpp>
 #include <exchange/order_status.hpp>
+#include <exchange/trade_id.hpp>
+#include <exchange/trade.hpp>
 
 #include <iostream>
 
@@ -98,5 +100,23 @@ int main()
     std::cout << "Order symbol: " << order.symbol().value() << '\n';
     std::cout << "Order starts pending: "
               << (order.status() == exchange::OrderStatus::pending) << '\n';
+
+    const exchange::TradeId trade_id{702};
+
+    const exchange::OrderId buy_order_id{42};
+    const exchange::OrderId sell_order_id{43};
+
+    const exchange::Trade trade{
+        trade_id,
+        buy_order_id,
+        sell_order_id,
+        symbol,
+        price,
+        quantity};
+
+    std::cout << "Trade ID: " << trade.trade_id().value() << '\n';
+    std::cout << "Buy order ID: " << trade.buy_order_id().value() << '\n';
+    std::cout << "Sell order ID: " << trade.sell_order_id().value() << '\n';
+    std::cout << "Trade symbol: " << trade.symbol().value() << '\n';
     return 0;
 }
