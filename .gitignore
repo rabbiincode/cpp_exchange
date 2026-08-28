@@ -1,0 +1,4 @@
+build/
+/exchange
+/trading
+.DS_Store
