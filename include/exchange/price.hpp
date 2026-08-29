@@ -29,4 +29,4 @@ private:
     std::uint64_t value_;
 };
 
-}  // namespace exchange
+}

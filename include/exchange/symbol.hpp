@@ -33,4 +33,4 @@ namespace exchange
         std::string value_;
     };
 
-} // namespace exchange
+}

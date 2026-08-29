@@ -14,4 +14,4 @@ namespace exchange {
         rejected,         // Order has been rejected due to invalid parameters or insufficient funds
     };
 
-}  // namespace exchange
+}

@@ -9,4 +9,4 @@ enum class OrderType : std::uint8_t {
     market
 };
 
-}  // namespace exchange
+}

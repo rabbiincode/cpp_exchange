@@ -11,4 +11,4 @@ namespace exchange {
         fok  // Fill Or Kill. Execute the entire quantity immediately or execute none of it.
     };
 
-}  // namespace exchange
+}

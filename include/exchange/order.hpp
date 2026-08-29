@@ -9,13 +9,15 @@
 #include <exchange/time_in_force.hpp>
 #include <exchange/trader_id.hpp>
 
-namespace exchange {
+namespace exchange
+{
 
-class Order {
-public:
+  class Order
+  {
+  public:
     Order(OrderId id,
           TraderId trader_id,
-          const Symbol& symbol,
+          const Symbol &symbol,
           Side side,
           Price price,
           Quantity quantity,
@@ -33,14 +35,25 @@ public:
 
     OrderId id() const { return id_; }
     TraderId trader_id() const { return trader_id_; }
-    const Symbol& symbol() const { return symbol_; }
+    const Symbol &symbol() const { return symbol_; }
     Side side() const { return side_; }
     Price price() const { return price_; }
     Quantity quantity() const { return quantity_; }
     TimeInForce time_in_force() const { return time_in_force_; }
     OrderStatus status() const { return status_; }
 
-private:
+    bool accept()
+    {
+      if (status_ != OrderStatus::pending)
+      {
+        return false;
+      }
+
+      status_ = OrderStatus::open;
+      return true;
+    }
+
+  private:
     OrderId id_;
     TraderId trader_id_;
     Symbol symbol_;
@@ -49,6 +62,6 @@ private:
     Quantity quantity_;
     TimeInForce time_in_force_;
     OrderStatus status_;
-};
+  };
 
-}  // namespace exchange
+}

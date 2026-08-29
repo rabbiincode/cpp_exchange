@@ -42,4 +42,4 @@ private:
   Quantity quantity_;
 };
 
-}  // namespace exchange
+}

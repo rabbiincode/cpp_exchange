@@ -9,4 +9,4 @@ enum class Side : std::uint8_t {
     sell
 };
 
-}  // namespace exchange
+}

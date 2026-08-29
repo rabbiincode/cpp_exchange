@@ -59,7 +59,7 @@ bool rejects_empty_symbol()
     return false;
 }
 
-}  // namespace
+}
 
 int main()
 {
@@ -78,7 +78,7 @@ int main()
     check(price.value() == 95, "Price retains its value");
     check(symbol.value() == "BTCUSD", "Symbol retains its value");
 
-    const exchange::Order order{
+    exchange::Order order{
         buy_order_id,
         trader_id,
         symbol,
@@ -90,6 +90,12 @@ int main()
 
     check(order.status() == exchange::OrderStatus::pending,
           "A new order starts pending");
+    check(order.accept(), "A pending order can be accepted");
+    check(order.status() == exchange::OrderStatus::open,
+          "An accepted order becomes open");
+    check(!order.accept(), "An open order cannot be accepted again");
+    check(order.status() == exchange::OrderStatus::open,
+          "Failed acceptance leaves an order open");
 
     const exchange::Trade trade{
         exchange::TradeId{702},
