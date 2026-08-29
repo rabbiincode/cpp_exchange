@@ -11,7 +11,7 @@ namespace exchange
     {
     public:
         explicit Symbol(std::string value)
-            : value_{std::move(value)}
+            : value_{value} // std::move(value) - Can be used but not ideal now.
         {
             if (value_.empty())
             {
