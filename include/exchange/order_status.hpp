@@ -2,7 +2,8 @@
 
 #include <cstdint>
 
-namespace exchange {
+namespace exchange
+{
 
     enum class OrderStatus : std::uint8_t
     {

@@ -2,11 +2,13 @@
 
 #include <cstdint>
 
-namespace exchange {
+namespace exchange
+{
 
-enum class Side : std::uint8_t {
-    buy,
-    sell
-};
+    enum class Side : std::uint8_t
+    {
+        buy,
+        sell
+    };
 
 }

@@ -2,27 +2,29 @@
 
 #include <cstdint>
 
-namespace exchange {
+namespace exchange
+{
 
-class TradeId {
-public:
-    explicit TradeId(std::uint64_t value)
-        : value_{value}
+    class TradeId
     {
-    }
+    public:
+        explicit TradeId(std::uint64_t value)
+            : value_{value}
+        {
+        }
 
-    std::uint64_t value() const
-    {
-        return value_;
-    }
+        std::uint64_t value() const
+        {
+            return value_;
+        }
 
-    bool operator==(const TradeId& other) const
-    {
-        return value_ == other.value_;
-    }
+        bool operator==(const TradeId &other) const
+        {
+            return value_ == other.value_;
+        }
 
-private:
-    std::uint64_t value_;
-};
+    private:
+        std::uint64_t value_;
+    };
 
 }

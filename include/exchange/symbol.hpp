@@ -19,7 +19,7 @@ namespace exchange
             }
         }
 
-        const std::string& value() const
+        const std::string &value() const
         {
             return value_;
         }

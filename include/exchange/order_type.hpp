@@ -2,11 +2,13 @@
 
 #include <cstdint>
 
-namespace exchange {
+namespace exchange
+{
 
-enum class OrderType : std::uint8_t {
-    limit,
-    market
-};
+    enum class OrderType : std::uint8_t
+    {
+        limit,
+        market
+    };
 
 }

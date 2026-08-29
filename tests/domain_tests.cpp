@@ -8,56 +8,73 @@
 #include <iostream>
 #include <stdexcept>
 
-namespace {
-
-int failures = 0;
-
-void check(bool condition, const char* message)
+namespace
 {
-    if (!condition) {
-        std::cerr << "FAILED: " << message << '\n';
-        ++failures;
+
+    int failures = 0;
+
+    void check(bool condition, const char *message)
+    {
+        if (!condition)
+        {
+            std::cerr << "FAILED: " << message << '\n';
+            ++failures;
+        }
     }
-}
 
-bool rejects_zero_quantity()
-{
-    try {
-        const exchange::Quantity quantity{0};
-    } catch (const std::invalid_argument&) {
-        return true;
-    } catch (...) {
+    bool rejects_zero_quantity()
+    {
+        try
+        {
+            const exchange::Quantity quantity{0};
+        }
+        catch (const std::invalid_argument &)
+        {
+            return true;
+        }
+        catch (...)
+        {
+            return false;
+        }
+
         return false;
     }
 
-    return false;
-}
+    bool rejects_zero_price()
+    {
+        try
+        {
+            const exchange::Price price{0};
+        }
+        catch (const std::invalid_argument &)
+        {
+            return true;
+        }
+        catch (...)
+        {
+            return false;
+        }
 
-bool rejects_zero_price()
-{
-    try {
-        const exchange::Price price{0};
-    } catch (const std::invalid_argument&) {
-        return true;
-    } catch (...) {
         return false;
     }
 
-    return false;
-}
+    bool rejects_empty_symbol()
+    {
+        try
+        {
+            const exchange::Symbol symbol{""};
+        }
+        catch (const std::invalid_argument &)
+        {
+            return true;
+        }
+        catch (...)
+        {
+            return false;
+        }
 
-bool rejects_empty_symbol()
-{
-    try {
-        const exchange::Symbol symbol{""};
-    } catch (const std::invalid_argument&) {
-        return true;
-    } catch (...) {
         return false;
     }
-
-    return false;
-}
 
 }
 
@@ -85,8 +102,7 @@ int main()
         exchange::Side::buy,
         price,
         quantity,
-        exchange::TimeInForce::gtc
-    };
+        exchange::TimeInForce::gtc};
 
     check(order.status() == exchange::OrderStatus::pending,
           "A new order starts pending");
@@ -103,8 +119,7 @@ int main()
         sell_order_id,
         symbol,
         price,
-        quantity
-    };
+        quantity};
 
     check(trade.buy_order_id() == buy_order_id,
           "Trade retains the buy order ID");
@@ -129,7 +144,8 @@ int main()
     check(exchange::is_terminal(exchange::OrderStatus::rejected),
           "Rejected order is terminal");
 
-    if (failures == 0) {
+    if (failures == 0)
+    {
         std::cout << "All domain tests passed\n";
     }
 

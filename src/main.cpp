@@ -93,8 +93,7 @@ int main()
         buy_side,
         price,
         quantity,
-        gtc
-    };
+        gtc};
 
     std::cout << "Order ID: " << order.id().value() << '\n';
     std::cout << "Order symbol: " << order.symbol().value() << '\n';
